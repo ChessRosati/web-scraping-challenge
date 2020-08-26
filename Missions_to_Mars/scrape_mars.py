@@ -65,4 +65,12 @@ def scrape():
         hemiPics.append(hemiDict)
         browser.visit(hemiURL)
 
+    browser.quit()
+
+    data = {"latestTitle" : latestTitle,
+        "latestText" : latestText,
+        "marsImages" : picURL,
+        "marsTable" : facts,
+        'hemisphereImages' : hemiPics}
+    return data
 scrape()
