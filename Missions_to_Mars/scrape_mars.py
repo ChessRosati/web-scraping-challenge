@@ -16,7 +16,7 @@ def scrape():
 
     #Mars News
     html = browser.html
-    soup = BeautifulSoup(html, 'html')
+    soup = BeautifulSoup(html, 'html.parser')
     results = soup.find('div', class_='list_text')
 
     latestTitle = results.find('a').text
@@ -26,7 +26,7 @@ def scrape():
     JPLurl = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(JPLurl)
     html = browser.html
-    soup = BeautifulSoup(html, 'html')
+    soup = BeautifulSoup(html, 'html.parser')
 
     picURL = soup.find('a', class_= "button fancybox")["data-fancybox-href"]
     picURL = "https://www.jpl.nasa.gov" + picURL
@@ -43,7 +43,7 @@ def scrape():
     hemiURL = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(hemiURL)
     html = browser.html
-    soup = BeautifulSoup(html, 'html')
+    soup = BeautifulSoup(html, 'html.parser')
 
     scrape = soup.find_all('div', class_='item')
     hemiPics = []
@@ -58,7 +58,7 @@ def scrape():
     
         browser.visit(link)
         hemitml = browser.html
-        hemiSoup = BeautifulSoup(hemitml, 'html')
+        hemiSoup = BeautifulSoup(hemitml, 'html.parser')
     
         pic = hemiSoup.find('div', class_='content').find('a')['href']
         hemiDict['img_url'] = pic
@@ -72,5 +72,6 @@ def scrape():
         "marsImages" : picURL,
         "marsTable" : facts,
         'hemisphereImages' : hemiPics}
+    print(hemiPics)
     return data
 scrape()

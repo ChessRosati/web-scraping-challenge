@@ -9,14 +9,14 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 def home():
     marsDB = mongo.db.mars_info.find_one()
 
-    return render_template("index.html", marsDB = marsDB)
+    return render_template("./index.html", marsDB = marsDB)
 
 @app.route("/scrape")
 def scraper():
     import scrape_mars
     marsData = scrape_mars.scrape()
 
-    mongo.db.mars_info.update({}, mars_data_scrape, upsert=True)
+    mongo.db.mars_info.update({}, marsData, upsert=True)
 
     return redirect("/")
 

@@ -1,0 +1,29 @@
+h2 {
+    font-size: 20pt;
+    color: black;
+}
+
+h3 {
+    font-size: 15pt;
+    color: black;
+}
+
+table {
+    border: black 1pt solid;
+}
+
+tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+.body {
+    background-color: lightblue;
+}
+
+.jumbotron {
+    background-color: silver;
+}
+
+.center {
+    text-align: center;
+}
